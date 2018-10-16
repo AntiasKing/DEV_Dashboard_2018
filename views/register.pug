@@ -1,0 +1,44 @@
+doctype html
+html(lang='en')
+    head
+        title Dashboard Register
+        link(rel="stylesheet" type="text/css" href="css/bootstrap.min.css")
+        link(rel="stylesheet" type="text/css" href="css/font-awesome.min.css")
+        link(rel="stylesheet" type="text/css" href="css/AdminLTE.min.css")
+        link(rel="stylesheet" type="text/css" href="css/ionicons.css")
+    body(class="hold-transition register-page")
+        div(class="register-box")
+            div(class="register-logo")
+                h1 DashBoard
+            div(class="register-box-body")
+                p(class="login-box-msg") Register a new membership
+                form(action="/register", method="post")
+                    div(class="form-group has-feedback")
+                        input(type="text", class="form-control", placeholder="Username", name="username")
+                        span(class="glyphicon glyphicons-user form-control-feedback")
+                    div(class="form-group has-feedback")
+                        input(type="email", class="form-control", placeholder="Email", name="email")
+                        span(class="glyphicon glyphicon-envelope form-control-feedback")
+                    div(class="form-group has-feedback")
+                        input(type="password", class="form-control", placeholder="Password", name="password")
+                        span(class="glyphicon glyphicon-lock form-control-feedback")
+                    div(class="form-group has-feedback")
+                        input(type="password", class="form-control", placeholder=" Retype password", name="password2")
+                        span(class="glyphicon glyphicon-log-in form-control-feedback")
+                    div(class="row")
+                        div(class="col-xs-4")
+                            button(type="submit", class="btn btn-primary btn-block btn-flat") Register
+                div(class="social-auth-links text-center")
+                        p - OR -
+                        a(href="/auth/twitter", class="btn btn-block btn-social btn-twitter btn-flat") Signin using Twitter
+                            i(class="fa fa-twitter") 
+                        a(href="#", class="btn btn-block btn-social btn-google btn-flat") Signin using Google+
+                            i(class="fa fa-google-plus")
+                        a(href="#", class="btn btn-block btn-social btn-github btn-flat") Signin using Github
+                            i(class="fa fa-github")
+                        a(href="#", class="btn btn-block btn-social btn-linkedin btn-flat") Signin using Linkedin
+                            i(class="fa fa-linkedin")
+                        a(href="/auth/azureadoauth2", class="btn btn-block btn-social btn-microsoft btn-flat") Signin using Office365
+                            i(class="fa fa-windows")
+                a(href="/", class="text-center") I already have a membership
+        script(src="bootstrap/dist/js/bootstrap.min.js")

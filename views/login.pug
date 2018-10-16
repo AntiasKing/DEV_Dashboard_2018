@@ -1,0 +1,46 @@
+doctype html
+html(lang="en")
+    head
+        title Dashboard Login
+        link(rel="stylesheet" type="text/css" href="css/bootstrap.min.css")
+        link(rel="stylesheet" type="text/css" href="css/font-awesome.min.css")
+        link(rel="stylesheet" type="text/css" href="css/AdminLTE.min.css")
+        link(rel="stylesheet" type="text/css" href="css/ionicons.css")
+    body(class="hold-transition login-page")
+        div(class="login-box")
+            div(class="login-logo")
+                h1 DashBoard
+            div(class="login-box-body")
+                p(class="login-box-msg") Sign in to start your session
+                form(action="/", method="post")
+                    div(class="form-group has-feedback")
+                        input(type="email", class="form-control", placeholder="Email", name="email")
+                        span(class="glyphicon glyphicon-envelope form-control-feedback")
+                    div(class="form-group has-feedback")
+                        input(type="password", class="form-control", placeholder="Password", name="password")
+                        span(class="glyphicon glyphicon-lock form-control-feedback")
+                    div(class="row")
+                        div(class="col-xs-4")
+                            button(type="submit", class="btn btn-primary btn-block btn-flat") Sign In
+                div(class="social-auth-links text-center")
+                    p - OR -
+                    a(href="/auth/twitter", class="btn btn-block btn-social btn-twitter btn-flat") Signin using Twitter
+                        i(class="fa fa-twitter") 
+                    a(href="/auth/twitch", class="btn btn-block btn-social btn-yahoo btn-flat") Signin using Twitch
+                        i(class="fa fa-twitch")
+                    a(href="/auth/github", class="btn btn-block btn-social btn-github btn-flat") Signin using Github
+                        i(class="fa fa-github")
+                    a(href="/auth/stack-exchange", class="btn btn-block btn-social btn-soundcloud btn-flat") Signin using Stack-Overflow
+                        i(class="fa fa-stack-overflow")
+                a(href="/register", class="text-center") Register
+
+        script(src="jquery/dist/jquery.min.js")
+        script(src="bootstrap/dist/js/bootstrap.min.js")
+        //- script(src="plugins/iCheck/icheck.min.js")
+
+        //- -
+        //-     jQuery('input').isCheck({
+        //-         checkboxClass: 'icheckbox_square-blue',
+        //-         radioClass: 'iradio_square-blue',
+        //-         increaseArea: '20%'
+        //-     });
