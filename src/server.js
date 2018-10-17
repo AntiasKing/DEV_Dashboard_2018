@@ -79,11 +79,13 @@ let user = require('./user.js');
 app.use('/', user);
 
 app.post("/saveWidget", function (req, res) {
-    let query = { "_id": req.user._id };
     let widget = { type: req.body.type, id: req.body.id, posX: req.body.posX, posY: req.body.posY, sizeX: req.body.sizeX, sizeY: req.body.sizeY, config: req.body.config };
-    User.update(query, { $push: { widgets: widget } }, function (err, raw) {
-        if (err)
+    User.findById(req.user._id, function (err, user) {
+        if (err) {
             console.log(err);
+            return;
+        }
+        user.widget.push(widget);
     });
 });
 
