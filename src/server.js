@@ -90,6 +90,12 @@ app.post("/saveWidget", function (req, res) {
     });
 });
 
+app.post("/loadWidget", function (req, res) {
+    res.send(JSON.stringify({
+        req.user.widgets
+    }));
+});
+
 app.get("/about.json", (req, res) => res.send(JSON.stringify({
     "client": {
         "host": `${req.ip}`
