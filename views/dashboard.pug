@@ -145,7 +145,7 @@ html(lang="en")
             var xhr = new XMLHttpRequest();
             xhr.open("POST", "http://91.134.141.40:8080/saveWidget", true);
             xhr.setRequestHeader("Content-Type", "application/json");
-            var data = JSON.stringify({"type": "twitter", "id": node.id, "sizeX": 2, "sizeY": 3, "config": {"sourceType": "profile","twitterAccount": twitterAccount}});
+            var data = JSON.stringify({"type": "twitter", "id": node.id, "sizeX": 2, "sizeY": 3});
             xhr.send(data);
         };
 
