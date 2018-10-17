@@ -91,8 +91,9 @@ app.post("/saveWidget", function (req, res) {
 });
 
 app.post("/loadWidget", function (req, res) {
+    var widgets = req.user.widgets;
     res.send(JSON.stringify({
-        req.user.widgets
+        widgets
     }));
 });
 
