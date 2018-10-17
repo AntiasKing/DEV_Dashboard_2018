@@ -86,6 +86,7 @@ app.post("/saveWidget", function (req, res) {
             return;
         }
         user.widgets.push(widget);
+        user.save();
     });
 });
 
