@@ -92,6 +92,7 @@ app.post("/saveWidget", function (req, res) {
 
 app.post("/loadWidget", function (req, res) {
     var widgets = req.user.widgets;
+    console.log("Bonjour");
     res.send(JSON.stringify({
         widgets
     }));
