@@ -79,7 +79,7 @@ let user = require('./user.js');
 app.use('/', user);
 
 app.post("/saveWidget", function (req, res) {
-    let widget = { type: req.body.type, id: req.body.id, posX: req.body.posX, posY: req.body.posY, sizeX: req.body.sizeX, sizeY: req.body.sizeY, config: req.body.config };
+    let widget = { widgetType: req.body.widgetType, id: req.body.id, posX: req.body.posX, posY: req.body.posY, sizeX: req.body.sizeX, sizeY: req.body.sizeY, config: req.body.config };
     User.findById(req.user._id, function (err, user) {
         if (err) {
             console.log(err);
