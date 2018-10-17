@@ -85,7 +85,6 @@ app.post("/saveWidget", function (req, res) {
             console.log(err);
             return;
         }
-        console.log(user);
         user.widgets.push(widget);
     });
 });

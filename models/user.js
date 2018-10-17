@@ -33,7 +33,7 @@ const UserSchema = mongoose.Schema({
         profilPick: String
     },
     widgets: [{
-        type: String,
+        widgetType: String,
         id: String,
         posX: Number,
         posY: Number,
