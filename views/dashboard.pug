@@ -113,13 +113,12 @@ html(lang="en")
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status == 200) {
                     var json = JSON.parse(xhr.responseText);
-                    console.log(json.widgets[0]);
-                    for (w in json.widgets) {
-                        console.log();
-                        if (w.widgetType === "twitter") {
-                            createTwitterWidget(w.config.twitterAccount);
-                        } else if (w.widgetType === "twitch") {
-                            createTwitchWidget(w.config.channel);
+                    console.log(json);
+                    for (i = 0; i < json.widgets.lenght; i++) {
+                        if (json.widgets[i].widgetType === "twitter") {
+                            createTwitterWidget(json.widgets[i].config.twitterAccount);
+                        } else if (json.widgets[i].widgetType === "twitch") {
+                            createTwitchWidget(json.widgets[i].config.channel);
                         }
                     }
                 }
