@@ -107,15 +107,19 @@ html(lang="en")
 
     script.
         function loadWidget() {
-            console.log("Widget");
             var xhr = new XMLHttpRequest();
             xhr.open("GET", "http://91.134.141.40:8080/loadWidget", true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.onreadystatechange = function() {
-                console.log(xhr.status);
                 if (xhr.readyState === 4 && xhr.status == 200) {
                     var json = JSON.parse(xhr.responseText);
-                    console.log(json);
+                    for (w in json) {
+                        if (w.widgetType === "twitter") {
+                            createTwitterWidget(w.config.twitterAccount);
+                        } else if (w.widgetType === "twitch") {
+                            createTwitchWidget(w.config.channel);
+                        }
+                    }
                 }
             };
             xhr.send();
