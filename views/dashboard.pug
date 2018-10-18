@@ -113,8 +113,6 @@ html(lang="en")
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status == 200) {
                     var json = JSON.parse(xhr.responseText);
-                    console.log(json);
-                    console.log(json.widgets.length);
                     for (i = 0; i < json.widgets.length; i++) {
                         console.log(json.widgets[i].widgetType);
                         if (json.widgets[i].widgetType === "twitter") {
@@ -143,9 +141,14 @@ html(lang="en")
     script.
         function createTwitterWidget(twitterAccount) {
             var node = document.createElement("LI");
-            var resize = document.createElement("SPAN");
-            resize.className += "gs-resize-handle gs-resize-handle-both";
-            node.appendChild(resize);
+
+            //- remove button
+            var remove = document.createElement("BUTTON");
+            remove.type = "button";
+            remove.className = "pull-right btn btn-box-tool";
+            remove.innerHTML = "<i class='fa fa-time'></i>"
+            node.appendChild(remove);
+
             node.id = "twitter-"+twitterAccount;
             var gridster = $(".gridster ul").gridster().data('gridster');
             twttr.widgets.createTimeline(
@@ -160,6 +163,7 @@ html(lang="en")
                 });
             gridster.add_widget(node, 2, 3);
 
+            //- update user
             var xhr = new XMLHttpRequest();
             xhr.open("POST", "http://91.134.141.40:8080/saveWidget", true);
             xhr.setRequestHeader("Content-Type", "application/json");
@@ -171,9 +175,13 @@ html(lang="en")
         function createTwitchEmbed(twitchChannel) {
             var gridster = $(".gridster ul").gridster().data('gridster');
             var node = document.createElement("LI");
-            var resize = document.createElement("SPAN");
-            resize.className += "gs-resize-handle gs-resize-handle-both";
-            node.appendChild(resize);
+            //- remove button
+            var remove = document.createElement("BUTTON");
+            remove.type = "button";
+            remove.className = "pull-right btn btn-box-tool";
+            remove.innerHTML = "<i class='fa fa-time'></i>"
+            node.appendChild(remove);
+
             node.id = "embed-" + twitchChannel;
             gridster.add_widget(node, 5, 3);
             new Twitch.Embed(node.id, {

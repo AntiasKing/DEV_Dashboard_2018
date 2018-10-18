@@ -90,9 +90,23 @@ app.post("/saveWidget", function (req, res) {
     });
 });
 
+app.post("/deleteWidget", function (req, res) {
+    let widgetId = req.body.widgetId;
+    User.findById(req.user._id, function (err, user) {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        var i = user.widgets.map(function (e) { return e.id; }).indexOf(widgetId);
+        if (i > -1) {
+            user.widgets.splice(i, 1);
+            user.save();
+        }
+    });
+});
+
 app.get("/loadWidget", function (req, res) {
     var widgets = req.user.widgets;
-    console.log("Bonjour");
     res.send(JSON.stringify({
         widgets
     }));
