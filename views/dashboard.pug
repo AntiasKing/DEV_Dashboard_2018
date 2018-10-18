@@ -116,9 +116,9 @@ html(lang="en")
                     for (i = 0; i < json.widgets.length; i++) {
                         console.log(json.widgets[i].widgetType);
                         if (json.widgets[i].widgetType === "twitter") {
-                            createTwitterWidget(json.widgets[i].config.twitterAccount);
+                            createTwitterWidget(json.widgets[i].config.twitterAccount, false);
                         } else if (json.widgets[i].widgetType === "twitch") {
-                            createTwitchWidget(json.widgets[i].config.channel);
+                            createTwitchWidget(json.widgets[i].config.channel, false);
                         }
                     }
                 }
@@ -139,7 +139,7 @@ html(lang="en")
         });
 
     script.
-        function createTwitterWidget(twitterAccount) {
+        function createTwitterWidget(twitterAccount, save = true) {
             var node = document.createElement("LI");
 
             //- remove button
@@ -164,17 +164,20 @@ html(lang="en")
             gridster.add_widget(node, 2, 3);
 
             //- update user
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "http://91.134.141.40:8080/saveWidget", true);
-            xhr.setRequestHeader("Content-Type", "application/json");
-            var data = JSON.stringify({"widgetType": "twitter", "id": node.id, "sizeX": 2, "sizeY": 3, "config": {"sourceType": "profile","twitterAccount": twitterAccount}});
-            xhr.send(data);
+            if (save) {
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "http://91.134.141.40:8080/saveWidget", true);
+                xhr.setRequestHeader("Content-Type", "application/json");
+                var data = JSON.stringify({"widgetType": "twitter", "id": node.id, "sizeX": 2, "sizeY": 3, "config": {"sourceType": "profile","twitterAccount": twitterAccount}});
+                xhr.send(data);
+            }
         };
 
     script.
-        function createTwitchEmbed(twitchChannel) {
+        function createTwitchEmbed(twitchChannel, save=true) {
             var gridster = $(".gridster ul").gridster().data('gridster');
             var node = document.createElement("LI");
+
             //- remove button
             var remove = document.createElement("BUTTON");
             remove.type = "button";
@@ -191,11 +194,13 @@ html(lang="en")
                 theme: 'dark'
             });
 
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "http://91.134.141.40:8080/saveWidget", true);
-            xhr.setRequestHeader("Content-Type", "application/json");
-            var data = JSON.stringify({"widgetType": "twitch", "id": node.id, "sizeX": 5, "sizeY": 3, "config": {"channel": twitchChannel}});
-            xhr.send(data);
+            if (save) {
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "http://91.134.141.40:8080/saveWidget", true);
+                xhr.setRequestHeader("Content-Type", "application/json");
+                var data = JSON.stringify({"widgetType": "twitch", "id": node.id, "sizeX": 5, "sizeY": 3, "config": {"channel": twitchChannel}});
+                xhr.send(data);
+            }
         };
 
     script.
