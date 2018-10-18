@@ -107,7 +107,7 @@ html(lang="en")
 
     script.
         function loadWidget() {
-            alert("Widget");
+            console.log("Widget");
             var xhr = new XMLHttpRequest();
             xhr.open("POST", "http://91.134.141.40:8080/loadWidget", true);
             xhr.setRequestHeader("Content-Type", "application/json");
