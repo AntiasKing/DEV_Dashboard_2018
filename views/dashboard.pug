@@ -114,7 +114,7 @@ html(lang="en")
                 if (xhr.readyState === 4 && xhr.status == 200) {
                     var json = JSON.parse(xhr.responseText);
                     console.log(json);
-                    console.log(json.widgets.lenght);
+                    console.log(json.widgets.widgets.lenght);
                     for (var i = 0; i < json.widgets.lenght; i++) {
                             console.log(json.widgets[i].widgetType);
                         if (json.widgets[i].widgetType === "twitter") {
