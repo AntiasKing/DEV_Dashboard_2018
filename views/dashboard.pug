@@ -115,6 +115,7 @@ html(lang="en")
                     var json = JSON.parse(xhr.responseText);
                     console.log(json);
                     for (i = 0; i < json.widgets.lenght; i++) {
+                            console.log(json.widgets[i].widgetType);
                         if (json.widgets[i].widgetType === "twitter") {
                             createTwitterWidget(json.widgets[i].config.twitterAccount);
                         } else if (json.widgets[i].widgetType === "twitch") {
