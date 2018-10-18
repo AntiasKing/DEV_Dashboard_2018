@@ -113,6 +113,7 @@ html(lang="en")
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status == 200) {
                     var json = JSON.parse(xhr.responseText);
+                    console.log(json);
                     for (w in json) {
                         if (w.widgetType === "twitter") {
                             createTwitterWidget(w.config.twitterAccount);
