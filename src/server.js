@@ -90,12 +90,12 @@ app.post("/saveWidget", function (req, res) {
     });
 });
 
-app.post("/loadWidget", function (req, res) {
-    // var widgets = req.user.widgets;
+app.get("/loadWidget", function (req, res) {
+    var widgets = req.user.widgets;
     console.log("Bonjour");
-    // res.send(JSON.stringify({
-    //     widgets
-    // }));
+    res.send(JSON.stringify({
+        widgets
+    }));
 });
 
 app.get("/about.json", (req, res) => res.send(JSON.stringify({
