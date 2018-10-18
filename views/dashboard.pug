@@ -8,7 +8,7 @@ html(lang="en")
         link(rel="stylesheet" type="text/css" href="css/ionicons.css")
         link(rel="stylesheet" type="text/css" href="AdminLTE-2.4.5/dist/css/skins/skin-blue.min.css")
         link(rel="stylesheet" type="text/css" href="css/jquery.gridster.css")
-    body(onbeforeprint="loadWidget()", class="hold-transition skin-blue sidebar-mini")
+    body(onunload="loadWidget()", class="hold-transition skin-blue sidebar-mini")
         div(class="wrapper")
             header(class="main-header")
                 a(href="/dashboard") DashBoard
