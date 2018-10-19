@@ -142,6 +142,8 @@ html(lang="en")
                             createTwitterWidget(json.widgets[i].config.twitterAccount, false);
                         } else if (json.widgets[i].widgetType === "twitch") {
                             createTwitchWidget(json.widgets[i].config.channel, false);
+                        } else if (json.widgets[i].widgetType === "youtube") {
+                            createYoutubeEmbed(json.widget[i].config.videoId, false);
                         }
                     }
                 }
