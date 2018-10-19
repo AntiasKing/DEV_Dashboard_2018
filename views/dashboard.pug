@@ -43,6 +43,15 @@ html(lang="en")
                                     a(class="btn btn-info", data-toggle="modal", data-target="#modal-twitch") Embed Stream
                         li(class="treeview")
                             a(href="#")
+                                i(class="fa fa-youtube")
+                                span Youtube
+                                span(class="pull-right-container")
+                                    i(class="fa fa-angle-left pull-right")
+                            ul(class="treeview-menu")
+                                li
+                                    a(class="btn btn-info", data-toggle="modal", data-target="#modal-youtube") Embed Video
+                        li(class="treeview")
+                            a(href="#")
                                 i(class="fa fa-github")
                                 span Github
                                 span(class="pull-right-container")
@@ -97,6 +106,20 @@ html(lang="en")
                                             label(for="twitchChannel", class="control-label") Channel name:
                                             input(class="form-control", type="text", placeHolder="jvtv", name="twitchChannel", id="twitchChannel")
                                         button(type="submit", class="btn btn-primary btn-block btn-flat", aria-hidden="true") Submit
+                    div(class="modal modal-info fade", id="modal-twityoutube", tabIndex="-1", role="dialog", aria-labelledby="youtube-modal")
+                        div(class="modal-dialog" role="document")
+                            div(class="modal-content")
+                                div(class="modal-header")
+                                    button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                                        span(span aria-hidden="true") &times;
+                                    h4(class="modal-title") Add an embed video
+                                div(class="modal-body")
+                                    form(action="javascript:createYoutubeEmbed(videoId.value)")
+                                        div(class="form-group")
+                                            label(for="videoId", class="control-label") Video Id:
+                                            input(class="form-control", type="text", placeHolder="M7lc1UVf-VE", name="youtubeId", id="youtubeId")
+                                        button(type="submit", class="btn btn-primary btn-block btn-flat", aria-hidden="true") Submit
+
 
     script(src="https://embed.twitch.tv/embed/v1.js")
     script(async, src="https://platform.twitter.com/widgets.js", charset="utf-8")
@@ -194,6 +217,7 @@ html(lang="en")
                 theme: 'dark'
             });
 
+            //- update user
             if (save) {
                 var xhr = new XMLHttpRequest();
                 xhr.open("POST", "http://91.134.141.40:8080/saveWidget", true);
@@ -202,6 +226,32 @@ html(lang="en")
                 xhr.send(data);
             }
         };
+
+    script.
+        function createYoutubeEmbed(videoId, save=true) {
+            var gridster = $(".gridster ul").gridster().data('gridster');
+            var node = document.createElement("LI");
+
+            //- remove button
+            var remove = document.createElement("BUTTON");
+            remove.type = "button";
+            remove.className = "pull-right btn btn-box-tool";
+            remove.innerHTML = "<i class='fa fa-time'></i>"
+            node.appendChild(remove);
+
+            node.id = "youtube-"+videoId;
+            gridster.add_widget(node, 5, 3);
+            var iframe = document.createElement("iframe");
+            iframe.src = "https://www.youtube.com/embed/"+videoId;
+
+            if (save) {
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "http://91.134.141.40:8080/saveWidget", true);
+                xhr.setRequestHeader("Content-Type", "application/json");
+                var data = JSON.stringify({"widgetType": "youtube", "id": node.id, "sizeX": 5, "sizeY": 3, "config": {"videoId": videoId}});
+                xhr.send(data);
+            }
+        }
 
     script.
         window.twttr = (function(d, s, id) {
