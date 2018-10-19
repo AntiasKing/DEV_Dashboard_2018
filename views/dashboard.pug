@@ -239,10 +239,12 @@ html(lang="en")
             remove.innerHTML = "<i class='fa fa-time'></i>"
             node.appendChild(remove);
 
-            node.id = "youtube-"+videoId;
-            gridster.add_widget(node, 5, 3);
             var iframe = document.createElement("iframe");
             iframe.src = "https://www.youtube.com/embed/"+videoId;
+            node.appendChild(iframe);
+
+            node.id = "youtube-"+videoId;
+            gridster.add_widget(node, 5, 3);
 
             if (save) {
                 var xhr = new XMLHttpRequest();
