@@ -241,6 +241,8 @@ html(lang="en")
 
             var iframe = document.createElement("iframe");
             iframe.src = "https://www.youtube.com/embed/"+videoId;
+            iframe.width = "750px";
+            iframe.height = "350px";
             node.appendChild(iframe);
 
             node.id = "youtube-"+videoId;
