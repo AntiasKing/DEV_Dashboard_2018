@@ -1,6 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
+const Intranet = require('intra-api');
 const router = express.Router();
 
 let User = require('../models/user');
@@ -126,6 +127,10 @@ router.get('/logout', function (req, res) {
 
 // Dashboard
 router.get("/dashboard", isLoggedIn, function (req, res) {
+    const Intra = new Intranet("https://intra.epitech.eu/auth-0735ec8adde3ae473cc050bf36895a12bbc1e1f5", "antoine.briaux@epitech.eu");
+    Intra.planning.get().then(function (res) {
+        console.log(res);
+    });
     res.render('dashboard', {
         displayPick: req.user.displayPick,
         username: req.user.displayName
