@@ -153,7 +153,7 @@ html(lang="en")
     script(async, src="https://platform.twitter.com/widgets.js", charset="utf-8")
     script(src="js/jquery.min.js")
     script(src="js/jquery.gridster.js")
-    script(src="AdminLTE-2.d95cf70ea110cda964a4e6ad0eed8fbebdfcf4e54.5/bower_components/bootstrap/dist/js/bootstrap.min.js")
+    script(src="AdminLTE-2.4.5/bower_components/bootstrap/dist/js/bootstrap.min.js")
     script(src="AdminLTE-2.4.5/dist/js/adminlte.min.js")
     script(src="js/octokit-rest.min.js")
 
@@ -239,7 +239,7 @@ html(lang="en")
                 xhr.setRequestHeader("Content-Type", "application/json");
                 var data = JSON.stringify({"widgetType": "twitter", "id": node.id, "sizeX": 2, "sizeY": 3, "config": {"sourceType": "profile","twitterAccount": twitterAccount}});
                 xhr.send(data);
-            }`$
+            }
         };
 
     script.
@@ -331,7 +331,7 @@ html(lang="en")
             iframe.height = "750px";
             node.appendChild(iframe);
 
-            gridster.add_widget(n`$ode, 5, 5);
+            gridster.add_widget(node, 5, 5);
             if (save) {
                 var xhr = new XMLHttpRequest();
                 xhr.open("POST", "http://91.134.141.40:8080/saveWidget", true);
@@ -365,7 +365,7 @@ html(lang="en")
         js.src = "https://platform.twitter.com/widgets.js";
         fjs.parentNode.insertBefore(js, fjs);
         t._e = [];
-        t.ready = function(f) {`$
+        t.ready = function(f) {
             t._e.push(f);
         };
             return t;
