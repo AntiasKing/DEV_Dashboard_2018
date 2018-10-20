@@ -154,7 +154,7 @@ html(lang="en")
                         if (json.widgets[i].widgetType === "twitter") {
                             createTwitterWidget(json.widgets[i].config.twitterAccount, false);
                         } else if (json.widgets[i].widgetType === "twitch") {
-                            createTwitchWidget(json.widgets[i].config.channel, false);
+                            createTwitchEmbed(json.widgets[i].config.channel, false);
                         } else if (json.widgets[i].widgetType === "youtube") {
                             createYoutubeEmbed(json.widgets[i].config.videoId, false);
                         } else if (json.widgets[i].widgetType === "intra") {
@@ -186,7 +186,7 @@ html(lang="en")
             var remove = document.createElement("BUTTON");
             remove.type = "button";
             remove.className = "pull-right btn btn-box-tool";
-            remove.innerHTML = "<i class='fa fa-time'></i>"
+            remove.innerHTML = "<i class='fa fa-times'></i>"
             node.appendChild(remove);
 
             node.id = "twitter-"+twitterAccount;
@@ -197,7 +197,7 @@ html(lang="en")
                     screenName: twitterAccount
                 }, node, {
                     width: '300',
-                    height: '450',
+                    height: '450',createTwitchEmbed
                     chrome: 'noscrollbar',
                     theme: 'dark'
                 });
@@ -222,7 +222,7 @@ html(lang="en")
             var remove = document.createElement("BUTTON");
             remove.type = "button";
             remove.className = "pull-right btn btn-box-tool";
-            remove.innerHTML = "<i class='fa fa-time'></i>"
+            remove.innerHTML = "<i class='fa fa-times'></i>"
             node.appendChild(remove);
 
             node.id = "embed-" + twitchChannel;
@@ -253,7 +253,7 @@ html(lang="en")
             var remove = document.createElement("BUTTON");
             remove.type = "button";
             remove.className = "pull-right btn btn-box-tool";
-            remove.innerHTML = "<i class='fa fa-time'></i>"
+            remove.innerHTML = "<i class='fa fa-times'></i>"
             node.appendChild(remove);
 
             var iframe = document.createElement("iframe");
@@ -283,7 +283,7 @@ html(lang="en")
             var remove = document.createElement("BUTTON");
             remove.type = "button";
             remove.className = "pull-right btn btn-box-tool";
-            remove.innerHTML = "<i class='fa fa-time'></i>"
+            remove.innerHTML = "<i class='fa fa-times'></i>"
             node.appendChild(remove);
 
             var iframe = document.createElement("iframe");

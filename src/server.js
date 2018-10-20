@@ -88,6 +88,7 @@ app.post("/saveWidget", function (req, res) {
         user.widgets.push(widget);
         user.save();
     });
+    res.send();
 });
 
 app.post("/deleteWidget", function (req, res) {
@@ -103,6 +104,7 @@ app.post("/deleteWidget", function (req, res) {
             user.save();
         }
     });
+    res.send();
 });
 
 app.get("/loadWidget", function (req, res) {
