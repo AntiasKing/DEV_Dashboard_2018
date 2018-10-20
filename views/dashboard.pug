@@ -187,6 +187,8 @@ html(lang="en")
                             createTwitchWidget(json.widgets[i].config.channel, false);
                         } else if (json.widgets[i].widgetType === "youtube") {
                             createYoutubeEmbed(json.widget[i].config.videoId, false);
+                        } else if (json.widgets[i].widgetType === "intra") {
+                            createIntraWidget(json.widget[i].config.link, false);
                         }
                     }
                 }
@@ -303,29 +305,7 @@ html(lang="en")
         }
 
     script.
-        function createIntraWidget(autoLoggingLink, semester0, semester1, semester2, semester3, semester4, semester5, semester6, semester7, semester8, semester9, save=true) {
-            //- var xhr = new XMLHttpRequest();
-            //- xhr.open("GET", autoLoggingLink, true);
-            //- xhr.onreadystatechange = function() {
-            //-     if (xhr.readyState === 4 && xhr.status == 200) {
-            //-         console.log(xhr.responseText);
-            //-     }
-            //- };
-            //- xhr.send();
-            //- var d = new Date();
-            //- var d1 = new Date();
-            //- d1.setDate(d.getDate()+ 7);
-            //- console.log("https://intra.epitech.eu/planning/load?format=json&start="+d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()+"&end="+d1.getFullYear()+"-"+(d1.getMonth()+1)+"-"+d1.getDate());
-            //- xhr.open("GET", "https://intra.epitech.eu/planning/load?format=json&start="+d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()+"&end="+d1.getFullYear()+"-"+(d1.getMonth()+1)+"-"+d1.getDate(), true);
-            //- xhr.setRequestHeader("Content-Type", "application/json");
-            //- xhr.onreadystatechange = function() {
-            //-     if (xhr.readyState === 4 && xhr.status == 200) {
-            //-         var json = JSON.parse(xhr.responseText);
-            //-         console.log(json);
-            //-     }
-            //- };
-            //- xhr.send();
-
+        function createIntraWidget(autoLoggingLink, save=true) {
             var gridster = $(".gridster ul").gridster().data('gridster');
             var node = document.createElement("LI");
 
@@ -342,9 +322,18 @@ html(lang="en")
             iframe.width = "750px";
             iframe.height = "750px";
             node.appendChild(iframe);
+            var d = new Date();
+            node.id = "intra-"+d.getTime();
 
-            node.id = "youtube-"+videoId;
             gridster.add_widget(node, 5, 5);
+
+            if (save) {
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "http://91.134.141.40:8080/saveWidget", true);
+                xhr.setRequestHeader("Content-Type", "application/json");
+                var data = JSON.stringify({"widgetType": "intra", "id": node.id, "sizeX": 5, "sizeY": 3, "config": {"link": autoLoggingLink}});
+                xhr.send(data);
+            }
         };
 
     script.
