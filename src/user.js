@@ -133,7 +133,8 @@ router.get("/dashboard", isLoggedIn, function (req, res) {
     });
     res.render('dashboard', {
         displayPick: req.user.displayPick,
-        username: req.user.displayName
+        username: req.user.displayName,
+        githubToken: req.user.github.token
     });
 });
 
