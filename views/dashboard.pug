@@ -338,6 +338,7 @@ html(lang="en")
 
             var iframe = document.createElement("iframe");
             iframe.src = autoLoggingLink;
+            iframe.sandbox = "allow-forms allow-scripts";
             iframe.width = "750px";
             iframe.height = "350px";
             node.appendChild(iframe);
