@@ -167,8 +167,8 @@ html(lang="en")
         };
 
     script.
-        function deleteWidget() {
-            console.log(deleteWidget.caller);
+        function deleteWidget(id) {
+            console.log(id, deleteWidget.caller);
         }
 
     script.
@@ -186,16 +186,16 @@ html(lang="en")
     script.
         function createTwitterWidget(twitterAccount, save = true) {
             var node = document.createElement("LI");
+            node.id = "twitter-"+twitterAccount;
 
             //- remove button
             var remove = document.createElement("BUTTON");
             remove.type = "button";
             remove.className = "pull-right btn btn-box-tool";
             remove.innerHTML = "<i class='fa fa-times'></i>"
-            remove.onclick = deleteWidget();
+            remove.onclick = function() {deleteWidget(node.id)};
             node.appendChild(remove);
 
-            node.id = "twitter-"+twitterAccount;
             var gridster = $(".gridster ul").gridster().data('gridster');
             twttr.widgets.createTimeline(
                 {
