@@ -138,8 +138,8 @@ html(lang="en")
                                 div(class="modal-header")
                                     button(type="button" class="close" data-dismiss="modal" aria-label="Close")
                                         span(span aria-hidden="true") &times;
-                           d95cf70ea110cda964a4e6ad0eed8fbebdfcf4e5        h4(class="modal-title") Add a planning
-                           d95cf70ea110cda964a4e6ad0eed8fbebdfcf4e5    div(class="modal-body")
+                                    h4(class="modal-title") Add a planning
+                                div(class="modal-body")
                                     form(action="javascript:createGithubWidget(user.value, repo.value)")
                                         div(class="form-group")
                                             label(for="user", class="control-label") User:
@@ -239,7 +239,7 @@ html(lang="en")
                 xhr.setRequestHeader("Content-Type", "application/json");
                 var data = JSON.stringify({"widgetType": "twitter", "id": node.id, "sizeX": 2, "sizeY": 3, "config": {"sourceType": "profile","twitterAccount": twitterAccount}});
                 xhr.send(data);
-            }
+            }`$
         };
 
     script.
@@ -331,7 +331,7 @@ html(lang="en")
             iframe.height = "750px";
             node.appendChild(iframe);
 
-            gridster.add_widget(node, 5, 5);
+            gridster.add_widget(n`$ode, 5, 5);
             if (save) {
                 var xhr = new XMLHttpRequest();
                 xhr.open("POST", "http://91.134.141.40:8080/saveWidget", true);
