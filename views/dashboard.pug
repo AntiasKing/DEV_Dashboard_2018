@@ -218,7 +218,7 @@ html(lang="en")
 
             //- update user
             if (save) {
-                var xhr = new XMLHhttps://mlab.com/databases/dashboard/collections/users?q=&f=&s=&pageNum=0&pageSize=10ttpRequest();
+                var xhr = new XMLHttpRequest();
                 xhr.open("POST", "http://91.134.141.40:8080/saveWidget", true);
                 xhr.setRequestHeader("Content-Type", "application/json");
                 var data = JSON.stringify({"widgetType": "twitter", "id": node.id, "sizeX": 2, "sizeY": 3, "config": {"sourceType": "profile","twitterAccount": twitterAccount}});
@@ -293,6 +293,7 @@ html(lang="en")
         function createIntraWidget(autoLoggingLink, save=true, id) {
             var gridster = $(".gridster ul").gridster().data('gridster');
             var node = document.createElement("LI");
+            var d = new Date();
             if (id) {
                 node.id = id;
             } else {
@@ -313,7 +314,6 @@ html(lang="en")
             iframe.width = "750px";
             iframe.height = "750px";
             node.appendChild(iframe);
-            var d = new Date();
 
             gridster.add_widget(node, 5, 5);
 
