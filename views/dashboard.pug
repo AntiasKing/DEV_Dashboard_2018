@@ -192,7 +192,7 @@ html(lang="en")
             remove.type = "button";
             remove.className = "pull-right btn btn-box-tool";
             remove.innerHTML = "<i class='fa fa-times'></i>"
-            remove.onclick = "deleteWidget()";
+            remove.onclick = deleteWidget();
             node.appendChild(remove);
 
             node.id = "twitter-"+twitterAccount;
