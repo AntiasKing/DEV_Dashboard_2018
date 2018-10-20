@@ -149,6 +149,8 @@ module.exports = function (passport) {
                     }
                 });
             } else {
+                user.github.token = accessToken;
+                user.save();
                 return done(null, user);
             }
         });
