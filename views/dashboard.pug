@@ -158,14 +158,16 @@ html(lang="en")
                         } else if (json.widgets[i].widgetType === "youtube") {
                             createYoutubeEmbed(json.widgets[i].config.videoId, false);
                         } else if (json.widgets[i].widgetType === "intra") {
-                            createIntraWidget(json.widgets[i].config.link, false);
+                            createIntraWidget(json.widgets[i].config.link, false, json.widgets[i].id);
                         }
                     }
                 }
             };
+            node.id = "intra-"+d.getTime();
             xhr.send();
         };
 
+            node.id = "intra-"+d.getTime();
     script.
         function deleteWidget(id) {
             var li = document.getElementById(id);
@@ -218,7 +220,7 @@ html(lang="en")
 
             //- update user
             if (save) {
-                var xhr = new XMLHttpRequest();
+                var xhr = new XMLHhttps://mlab.com/databases/dashboard/collections/users?q=&f=&s=&pageNum=0&pageSize=10ttpRequest();
                 xhr.open("POST", "http://91.134.141.40:8080/saveWidget", true);
                 xhr.setRequestHeader("Content-Type", "application/json");
                 var data = JSON.stringify({"widgetType": "twitter", "id": node.id, "sizeX": 2, "sizeY": 3, "config": {"sourceType": "profile","twitterAccount": twitterAccount}});
@@ -290,9 +292,14 @@ html(lang="en")
         }
 
     script.
-        function createIntraWidget(autoLoggingLink, save=true) {
+        function createIntraWidget(autoLoggingLink, save=true, id) {
             var gridster = $(".gridster ul").gridster().data('gridster');
             var node = document.createElement("LI");
+            if (id) {
+                node.id = id;
+            } else {
+                node.id = "intra-"+d.getTime();
+            }
 
             //- remove button
             var remove = document.createElement("BUTTON");
@@ -309,7 +316,6 @@ html(lang="en")
             iframe.height = "750px";
             node.appendChild(iframe);
             var d = new Date();
-            node.id = "intra-"+d.getTime();
 
             gridster.add_widget(node, 5, 5);
 
