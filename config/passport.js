@@ -126,6 +126,7 @@ module.exports = function (passport) {
         callbackURL: 'http://91.134.141.40:8080/auth/github/callback'
     }, function (accessToken, refresh_token, profile, done) {
         let query = { 'github.id': profile.id };
+        console.log(accessToken, refresh_token);
         User.findOne(query, function (err, user) {
             if (err) { return done(err); };
             if (!user) {
