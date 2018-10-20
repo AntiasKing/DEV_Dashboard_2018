@@ -168,7 +168,8 @@ html(lang="en")
 
     script.
         function deleteWidget(id) {
-            console.log(id, deleteWidget.caller);
+            var li = document.getElementById(id);
+            li.parentNode.removeChild(li);
         }
 
     script.
