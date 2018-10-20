@@ -306,11 +306,11 @@ html(lang="en")
         function createIntraWidget(autoLoggingLink, semester0, semester1, semester2, semester3, semester4, semester5, semester6, semester7, semester8, semester9, save=true) {
             var xhr = new XMLHttpRequest();
             xhr.open("GET", autoLoggingLink, true);
-            xhr.onreadystatechange( function () {
+            xhr.onreadystatechange = function() {
                 if (xhr.readyState ===4 && xhr.status === 200) {
                     console.log(xhr.responseText);
                 }
-            });
+            };
             xhr.send();
             var d = new Date();
             var d1 = new Date();
