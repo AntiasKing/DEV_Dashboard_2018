@@ -346,9 +346,9 @@ html(lang="en")
             const octokit = new Octokit();
 
             console.log(user, repo);
-            const pullRequests = await octokit.pullRequests.getAll({user, repo});
+            const pullRequests = await octokit.pullRequests.getAll({"owner": user, repo});
             console.log(pullRequests);
-            const forks = await octokit.repos.getForks({user, repo});
+            const forks = await octokit.repos.getForks({"owner":user, repo});
             console.log(forks);
         };
 
