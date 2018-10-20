@@ -345,6 +345,7 @@ html(lang="en")
         async function createGithubWidget(user, repo) {
             const octokit = new Octokit();
 
+            console.log(user, repo);
             const pullRequests = await octokit.pullRequests.getAll({user, repo});
             console.log(pullRequests);
             const forks = await octokit.repos.getForks({user, repo});
