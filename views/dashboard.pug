@@ -138,8 +138,8 @@ html(lang="en")
                                 div(class="modal-header")
                                     button(type="button" class="close" data-dismiss="modal" aria-label="Close")
                                         span(span aria-hidden="true") &times;
-                                    h4(class="modal-title") Add a planning
-                                div(class="modal-body")
+                           d95cf70ea110cda964a4e6ad0eed8fbebdfcf4e5        h4(class="modal-title") Add a planning
+                           d95cf70ea110cda964a4e6ad0eed8fbebdfcf4e5    div(class="modal-body")
                                     form(action="javascript:createGithubWidget(user.value, repo.value)")
                                         div(class="form-group")
                                             label(for="user", class="control-label") User:
@@ -153,7 +153,7 @@ html(lang="en")
     script(async, src="https://platform.twitter.com/widgets.js", charset="utf-8")
     script(src="js/jquery.min.js")
     script(src="js/jquery.gridster.js")
-    script(src="AdminLTE-2.4.5/bower_components/bootstrap/dist/js/bootstrap.min.js")
+    script(src="AdminLTE-2.d95cf70ea110cda964a4e6ad0eed8fbebdfcf4e54.5/bower_components/bootstrap/dist/js/bootstrap.min.js")
     script(src="AdminLTE-2.4.5/dist/js/adminlte.min.js")
     script(src="js/octokit-rest.min.js")
 
@@ -345,7 +345,7 @@ html(lang="en")
         async function createGithubWidget(user, repo) {
             const octokit = new Octokit();
 
-            const acces_token = #{githubToken};
+            const acces_token = `${githubToken}`;
             console.log(user, repo, acces_token);
             const auth = await octokit.authorization.check({"client_id": "2ccd1aa2df850c8d8c70", "access_token": acces_token});
             console.log(auth);
@@ -365,7 +365,7 @@ html(lang="en")
         js.src = "https://platform.twitter.com/widgets.js";
         fjs.parentNode.insertBefore(js, fjs);
         t._e = [];
-        t.ready = function(f) {
+        t.ready = function(f) {`$
             t._e.push(f);
         };
             return t;
