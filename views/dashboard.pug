@@ -132,7 +132,7 @@ html(lang="en")
                                             label(for="autoLoggingLink", class="control-label") Auto Logging Link:
                                             input(class="form-control", type="text", name="autoLoggingLink", id="autoLoggingLink")
                                             label(for="semester0", class="form-check-label") Semester 0:
-                                                input(class="form-check-input", type="checkbox", name="semester0", id="semester0")
+                                            input(class="form-check-input", type="checkbox", name="semester0", id="semester0")
                                             br
                                             label(for="semester1", class="form-check-label") Semester 1:
                                             input(class="form-check-input", type="checkbox", name="semester1", id="semester1")
@@ -304,7 +304,22 @@ html(lang="en")
 
     script.
         function createIntraWidget(autoLoggingLink, semester0, semester1, semester2, semester3, semester4, semester5, semester6, semester7, semester8, semester9, save=true) {
-            console.log(autoLoggingLink, semester0, semester1, semester2, semester3, semester4, semester5, semester6, semester7, semester8, semester9);
+            vqr xhr = new XMLHttpRequest();
+            xhr.open("GET", autoLoggingLink, true);
+            xhr.send();
+            var d = new Date();
+            var d1 = new Date();
+            d1.setDate(d.getDate()+ 7);
+            console.log("https://intra.epitech.eu/planning/load?format=json&start="+d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()+"&end="+d1.getFullYear()+"-"+(d1.getMonth()+1)+"-"+d1.getDate());
+            xhr.open("GET", "https://intra.epitech.eu/planning/load?format=json&start="+d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()+"&end="+d1.getFullYear()+"-"+(d1.getMonth()+1)+"-"+d1.getDate(), true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status == 200) {
+                    var json = JSON.parse(xhr.responseText);
+                    console.log(json);
+                }
+            };
+            xhr.send();
         };
 
     script.
