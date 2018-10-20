@@ -342,7 +342,7 @@ html(lang="en")
         };
 
     script.
-        function createGithubWidget(user, repo) {
+        async function createGithubWidget(user, repo) {
             const octokit = new Octokit();
 
             const pullRequests = await octokit.pullRequests.getAll({user, repo});
