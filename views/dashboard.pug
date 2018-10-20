@@ -167,6 +167,11 @@ html(lang="en")
         };
 
     script.
+        function deleteWidget() {
+            console.log(deleteWidget.caller);
+        }
+
+    script.
         $(function(){ //DOM Ready
             $(".gridster ul").gridster({
                 widget_margins: [10, 10],
@@ -187,6 +192,7 @@ html(lang="en")
             remove.type = "button";
             remove.className = "pull-right btn btn-box-tool";
             remove.innerHTML = "<i class='fa fa-times'></i>"
+            remove.onclick = "deleteWidget()";
             node.appendChild(remove);
 
             node.id = "twitter-"+twitterAccount;
@@ -222,7 +228,8 @@ html(lang="en")
             var remove = document.createElement("BUTTON");
             remove.type = "button";
             remove.className = "pull-right btn btn-box-tool";
-            remove.innerHTML = "<i class='fa fa-times'></i>"
+            remove.innerHTML = "<i class='fa fa-times'></i>";
+            remove.onclick = "deleteWidget()";
             node.appendChild(remove);
 
             node.id = "embed-" + twitchChannel;
@@ -253,7 +260,8 @@ html(lang="en")
             var remove = document.createElement("BUTTON");
             remove.type = "button";
             remove.className = "pull-right btn btn-box-tool";
-            remove.innerHTML = "<i class='fa fa-times'></i>"
+            remove.innerHTML = "<i class='fa fa-times'></i>";
+            remove.onclick = "deleteWidget()";
             node.appendChild(remove);
 
             var iframe = document.createElement("iframe");
@@ -283,7 +291,8 @@ html(lang="en")
             var remove = document.createElement("BUTTON");
             remove.type = "button";
             remove.className = "pull-right btn btn-box-tool";
-            remove.innerHTML = "<i class='fa fa-times'></i>"
+            remove.innerHTML = "<i class='fa fa-times'></i>";
+            remove.onclick = "deleteWidget()";
             node.appendChild(remove);
 
             var iframe = document.createElement("iframe");
