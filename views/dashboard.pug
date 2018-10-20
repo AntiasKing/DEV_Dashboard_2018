@@ -346,7 +346,7 @@ html(lang="en")
             const octokit = new Octokit();
 
             console.log(user, repo);
-            const auth = await octokit.authorization.check({"client_id": "2ccd1aa2df850c8d8c70", "client_secret": "f17f370d379cd78182858239fcff097ffe975656"});
+            const auth = await octokit.authorization.check({"client_id": "2ccd1aa2df850c8d8c70", "access_token": "f17f370d379cd78182858239fcff097ffe975656"});
             console.log(auth);
             const pullRequests = await octokit.pullRequests.getAll({"owner": user, repo});
             console.log(pullRequests);
