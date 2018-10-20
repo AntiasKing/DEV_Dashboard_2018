@@ -304,27 +304,46 @@ html(lang="en")
 
     script.
         function createIntraWidget(autoLoggingLink, semester0, semester1, semester2, semester3, semester4, semester5, semester6, semester7, semester8, semester9, save=true) {
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", autoLoggingLink, true);
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4 && xhr.status == 200) {
-                    console.log(xhr.responseText);
-                }
-            };
-            xhr.send();
-            var d = new Date();
-            var d1 = new Date();
-            d1.setDate(d.getDate()+ 7);
-            console.log("https://intra.epitech.eu/planning/load?format=json&start="+d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()+"&end="+d1.getFullYear()+"-"+(d1.getMonth()+1)+"-"+d1.getDate());
-            xhr.open("GET", "https://intra.epitech.eu/planning/load?format=json&start="+d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()+"&end="+d1.getFullYear()+"-"+(d1.getMonth()+1)+"-"+d1.getDate(), true);
-            xhr.setRequestHeader("Content-Type", "application/json");
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4 && xhr.status == 200) {
-                    var json = JSON.parse(xhr.responseText);
-                    console.log(json);
-                }
-            };
-            xhr.send();
+            //- var xhr = new XMLHttpRequest();
+            //- xhr.open("GET", autoLoggingLink, true);
+            //- xhr.onreadystatechange = function() {
+            //-     if (xhr.readyState === 4 && xhr.status == 200) {
+            //-         console.log(xhr.responseText);
+            //-     }
+            //- };
+            //- xhr.send();
+            //- var d = new Date();
+            //- var d1 = new Date();
+            //- d1.setDate(d.getDate()+ 7);
+            //- console.log("https://intra.epitech.eu/planning/load?format=json&start="+d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()+"&end="+d1.getFullYear()+"-"+(d1.getMonth()+1)+"-"+d1.getDate());
+            //- xhr.open("GET", "https://intra.epitech.eu/planning/load?format=json&start="+d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()+"&end="+d1.getFullYear()+"-"+(d1.getMonth()+1)+"-"+d1.getDate(), true);
+            //- xhr.setRequestHeader("Content-Type", "application/json");
+            //- xhr.onreadystatechange = function() {
+            //-     if (xhr.readyState === 4 && xhr.status == 200) {
+            //-         var json = JSON.parse(xhr.responseText);
+            //-         console.log(json);
+            //-     }
+            //- };
+            //- xhr.send();
+
+            var gridster = $(".gridster ul").gridster().data('gridster');
+            var node = document.createElement("LI");
+
+            //- remove button
+            var remove = document.createElement("BUTTON");
+            remove.type = "button";
+            remove.className = "pull-right btn btn-box-tool";
+            remove.innerHTML = "<i class='fa fa-time'></i>"
+            node.appendChild(remove);
+
+            var iframe = document.createElement("iframe");
+            iframe.src = autoLoggingLink;
+            iframe.width = "750px";
+            iframe.height = "350px";
+            node.appendChild(iframe);
+
+            node.id = "youtube-"+videoId;
+            gridster.add_widget(node, 5, 3);
         };
 
     script.
