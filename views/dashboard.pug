@@ -11,7 +11,7 @@ html(lang="en")
     body(onload="loadWidget()", class="hold-transition skin-blue sidebar-mini")
         div(class="wrapper")
             header(class="main-header")
-                a(href="/dashboard") DashBoard
+                a(href="/dashboard", class="logo", style="font-size: xx-large;") DashBoard
             aside(class="main-sidebar")
                 section(class="sidebar")
                     div(class="user-panel")
@@ -69,14 +69,6 @@ html(lang="en")
                                 li
                                     a(class="btn btn-info", data-toggle="modal", data-target="#modal-intra") Planning
             div(class="content-wrapper")
-                section(class="content-header")
-                    h1 Page Header
-                        small Description
-                    ol(class="breadcrumb")
-                        li
-                            a(href="#") Level
-                                i(class="fa fa-dashboard")
-                        li(class="active") Here
                 section(class="content container-fluid", id="widget-container")
                     div(class="gridster")
                         ul
