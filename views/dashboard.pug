@@ -361,7 +361,7 @@ html(lang="en")
             var secret = "#{githubToken}";
             octokit.authenticate({
                 type: 'app',
-                token: secret;
+                token: secret
             });
 
             var pullRequests = await paginate(octokit.pullRequests.getAll, user, repo);
