@@ -14,7 +14,11 @@ html(lang="en")
                 a(href="/dashboard", class="logo", style="font-size: xx-large;") DashBoard
                 nav(class="navbar navbar-static-top")
                     div(class="navbar-custom-menu")
-                        a(href="/logout") Logout
+                        ul(class="nav navbar-nav")
+                            li(class="dropdown user user-menu")
+                                a(href="#", class="dropdown-toggle", data-toggle="dropdown")
+                                    img(src=`${displayPick}`, class="img-circle", alt="User Image")
+                                    span(class="hidden-xs") #{username}
             aside(class="main-sidebar")
                 section(class="sidebar")
                     div(class="user-panel")
