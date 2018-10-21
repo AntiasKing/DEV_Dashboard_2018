@@ -360,8 +360,8 @@ html(lang="en")
 
             var secret = "#{githubToken}";
             octokit.authenticate({
-                type: 'app',
-                token: "91:a5:40:fb:c5:59:c6:eb:87:6b:ca:c9:7d:6a:cc:f4:89:e2:ee:c9"
+                type: 'oauth',
+                token: secret
             });
 
             var pullRequests = await paginate(octokit.pullRequests.getAll, user, repo);
