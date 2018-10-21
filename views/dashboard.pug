@@ -353,10 +353,12 @@ html(lang="en")
             var gridster = $(".gridster ul").gridster().data('gridster');
 
             var secret = "#{githubToken}";
-            octokit.authenticate({
-                type: 'oauth',
-                token: secret
-            });
+            if (secret) {
+                octokit.authenticate({
+                    type: 'oauth',
+                    token: secret
+                });
+            }
 
             var pullRequests = await paginate(octokit.pullRequests.getAll, user, repo);
             var forks = await paginate(octokit.repos.getForks, user, repo);
