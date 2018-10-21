@@ -114,10 +114,71 @@ app.get("/loadWidget", function (req, res) {
     }));
 });
 
-app.get("/about.json", (req, res) => res.send(JSON.stringify({
-    "client": {
-        "host": `${req.ip}`
-    }, "server": { "current_time": (new Date).getTime(), "services": [] }
-})));
+app.get("/about.json", function (req, res) {
+    var ip = req.ip;
+    if (ip.substr(0, 7) == "::ffff:") {
+        ip = ip.substr(7);
+    }
+    res.send(JSON.stringify({
+        "client": {
+            "host": ip,
+        }, "server": {
+            "current_time": (new Date).getTime(), "services": [{
+                "name": "twitter",
+                "widgets": [{
+                    "name": "twitter-timeline",
+                    "description": "Affiche la timeline pour un utilisateur donné",
+                    "params": [{
+                        "name": "@",
+                        "type": "string"
+                    }]
+                }]
+            }, {
+                "name": "twitch",
+                "widgets": [{
+                    "name": "Embed Twitch Channel",
+                    "description": "Affiche un live twitch d'une chaine N",
+                    "params": [{
+                        "name": "channel",
+                        "type": "string"
+                    }]
+                }]
+            }, {
+                "name": "github",
+                "widgets": [{
+                    "name": "Repo stats",
+                    "description": "Affiche le nombre branches, de pull-request et de fork pour un repo N d'un utilisateur X",
+                    "params": [{
+                        "name": "owner",
+                        "type": "string"
+                    }, {
+                        "name": "repo",
+                        "type": "string"
+                    }]
+                }]
+            }, {
+                "name": "youtube",
+                "widgets": [{
+                    "name": "Embed video",
+                    "description": "Affiche une video youtube N",
+                    "params": [{
+                        "name": "videoID",
+                        "type": "string"
+                    }]
+                }]
+            }, {
+                "name": "intra",
+                "widgets": [{
+                    "name": "Intra",
+                    "description": "Affiche l'intra Epitech pour l'utilisateur X",
+                    "params": [{
+                        "name": "autologgingLink",
+                        "type": "string"
+                    }]
+                }]
+            }]
+        }
+    }));
+});
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
