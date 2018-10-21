@@ -359,7 +359,8 @@ html(lang="en")
             var gridster = $(".gridster ul").gridster().data('gridster');
 
             var pullRequests = await paginate(octokit.pullRequests.getAll, user, repo);
-            const forks = await paginate(octokit.repos.getForks, user, repo);
+            var forks = await paginate(octokit.repos.getForks, user, repo);
+            console.log(pullRequests, forks);
 
             var node = document.createElement("LI");
             node.id = "github-"+user+"-"+repo;
@@ -368,7 +369,7 @@ html(lang="en")
             node.querySelector("#pull-request-text").innerHTML = "Pull's requests";
             node.querySelector("#pull-request-nb").innerHTML = pullRequests.length;
             node.querySelector("#fork-text").innerHTML = "Forks";
-            node.querySelector("#fork-nb").innerHTML = pullRequests.length;
+            node.querySelector("#fork-nb").innerHTML = forks.length;
             node.querySelector(".btn").onclick = function() {deleteWidget(node.id)};
             gridster.add_widget(node, 5, 3);
         };
