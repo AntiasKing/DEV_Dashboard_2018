@@ -121,6 +121,7 @@ app.get("/about.json", function (req, res) {
     if (ip.substr(0, 7) == "::ffff:") {
         ip = ip.substr(7);
     }
+    res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify({
         "client": {
             "host": ip
