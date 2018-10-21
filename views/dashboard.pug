@@ -365,7 +365,7 @@ html(lang="en")
             node.id = "github-"+user+"-"+repo;
             node.innerHTML = '<div class="box"><div class="box-header with-border"><h3 class="box-title" id="box-title"></h3><div class="box-tools pull-right"> <button type="button" class="btn" onclick="deleteWidget(node.id)"><i class="fa fa-times"></i></button></div></div><div class="box-body"><div class="col-md-4 col-sm-6 col-xs-12"><div class="info-box"><span class="info-box-icon bg-aqua"><ion-icon name="git-pull-request"></ion-icon></span><div class="info-box-content"><span class="info-box-text" id="pull-request-text"></span><span class="info-box-number" id="pull-request-nb"></span></div></div></div></div><div class="box-footer"></div>';
             node.querySelector("#pull-request-text").innerHTML = "Pull's request for: " + user + "'s " + repo;
-            node.querySelector("#pull-request-nb").innerHTML = pullRequests.data.length;
+            node.querySelector("#pull-request-nb").innerHTML = pullRequests.length;
             gridster.add_widget(node, 5, 3);
         };
 
