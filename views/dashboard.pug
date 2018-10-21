@@ -12,6 +12,8 @@ html(lang="en")
         div(class="wrapper")
             header(class="main-header")
                 a(href="/dashboard", class="logo", style="font-size: xx-large;") DashBoard
+                nav(class="navbar navbar-static-top")
+                    a(href="/logout") Logout
             aside(class="main-sidebar")
                 section(class="sidebar")
                     div(class="user-panel")
@@ -145,7 +147,7 @@ html(lang="en")
     script(async, src="https://platform.twitter.com/widgets.js", charset="utf-8")
     script(src="js/jquery.min.js")
     script(src="js/jquery.gridster.js")
-    script(src="AdminLTE-2.4.5/bower_components/bootstrap/dist/js/bootstrap.min.js")
+    script(src="AdminLTE-2.4.5/bower_components/comment_idbootstrap/dist/js/bootstrap.min.js")
     script(src="AdminLTE-2.4.5/dist/js/adminlte.min.js")
     script(src="js/octokit-rest.min.js")
     script(src="https://unpkg.com/ionicons@4.4.6/dist/ionicons.js")
@@ -304,7 +306,7 @@ html(lang="en")
         function createIntraWidget(autoLoggingLink, save=true, id) {
             var gridster = $(".gridster ul").gridster().data('gridster');
             var node = document.createElement("LI");
-            var d = new Date();
+            var d = new Date();comment_id
             if (id) {
                 node.id = id;
             } else {
