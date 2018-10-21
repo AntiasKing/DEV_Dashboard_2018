@@ -9,9 +9,11 @@ const passport = require('passport');
 var morgan = require('morgan')
 
 const app = express();
-const port = 80;
+// const port = 80;
 
 app.use(morgan('dev'));
+
+app.set('port', (process.env.PORT || 5000))
 
 const mongoUser = encodeURI('back');
 const mongoPass = encodeURI('ktDa3GE2}NnfT8cx~J)x');
@@ -121,7 +123,7 @@ app.get("/about.json", function (req, res) {
     }
     res.send(JSON.stringify({
         "client": {
-            "host": ip,
+            "host": ip
         }, "server": {
             "current_time": (new Date).getTime(), "services": [{
                 "name": "twitter",
@@ -181,4 +183,4 @@ app.get("/about.json", function (req, res) {
     }));
 });
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(app.get('port'), () => console.log(`Example app listening on port ${port}!`));
