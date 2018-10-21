@@ -19,6 +19,13 @@ html(lang="en")
                                 a(href="#", class="dropdown-toggle", data-toggle="dropdown")
                                     img(src=`${displayPick}`, class="img-circle", alt="User Image")
                                     span(class="hidden-xs") #{username}
+                                ul(class="dropdown-menu")
+                                    li(class="user-header")
+                                        img(src=`${displayPick}`, class="img-circle", alt="User Image")
+                                        span(class="hidden-xs") #{username}
+                                    li(class="user-footer")
+                                        div(class="pull-right")
+                                            a(href="/logout", class="btn btn-default btn-flat") Sign Out
             aside(class="main-sidebar")
                 section(class="sidebar")
                     div(class="user-panel")
