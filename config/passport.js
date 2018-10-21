@@ -121,8 +121,8 @@ module.exports = function (passport) {
 
     // Github Login
     passport.use(new GitHubStrategy({
-        clientID: '2ccd1aa2df850c8d8c70',
-        clientSecret: 'f17f370d379cd78182858239fcff097ffe975656',
+        clientID: 'Iv1.c6b8da902ffa55b6',
+        clientSecret: 'b4481de4514c8e23efe8f67a0f2cd196849c1f06',
         callbackURL: 'http://91.134.141.40:8080/auth/github/callback'
     }, function (accessToken, refresh_token, profile, done) {
         let query = { 'github.id': profile.id };
