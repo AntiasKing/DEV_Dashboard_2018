@@ -357,7 +357,10 @@ html(lang="en")
             const octokit = new Octokit();
             var gridster = $(".gridster ul").gridster().data('gridster');
 
-            const pullRequests =  paginate(octokit.pullRequests.getAll, user, repo);
+            var pullRequests;
+            paginate(octokit.pullRequests.getAll, user, repo).then(data => {
+                pullRequests = data;
+            });
             const forks = await octokit.repos.getForks({"owner":user, repo});
 
             var node = document.createElement("LI");
