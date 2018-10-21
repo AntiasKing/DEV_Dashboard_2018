@@ -9,11 +9,10 @@ const passport = require('passport');
 var morgan = require('morgan')
 
 const app = express();
-// const port = 80;
+
+const port = process.env.PORT || 5000;
 
 app.use(morgan('dev'));
-
-app.set('port', (process.env.PORT || 5000))
 
 const mongoUser = encodeURI('back');
 const mongoPass = encodeURI('ktDa3GE2}NnfT8cx~J)x');
@@ -79,6 +78,7 @@ app.get('*', function (req, res, next) {
 // Routes Files
 let user = require('./user.js');
 app.use('/', user);
+app.set('port', (process.env.PORT || 5000))
 
 app.post("/saveWidget", function (req, res) {
     let widget = { widgetType: req.body.widgetType, id: req.body.id, posX: req.body.posX, posY: req.body.posY, sizeX: req.body.sizeX, sizeY: req.body.sizeY, config: req.body.config };
@@ -183,4 +183,4 @@ app.get("/about.json", function (req, res) {
     }));
 });
 
-app.listen(app.get('port'), () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
