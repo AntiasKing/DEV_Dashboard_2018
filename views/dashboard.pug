@@ -368,7 +368,7 @@ html(lang="en")
             node.querySelector("#pull-request-text").innerHTML = "Pull's requests";
             node.querySelector("#pull-request-nb").innerHTML = pullRequests.length;
             node.querySelector("#fork-text").innerHTML = "Forks";
-            node.querySelector("#pull-request-nb").innerHTML = pullRequests.length;
+            node.querySelector("#fork-nb").innerHTML = pullRequests.length;
             node.querySelector(".btn").onclick = function() {deleteWidget(node.id)};
             gridster.add_widget(node, 5, 3);
         };
