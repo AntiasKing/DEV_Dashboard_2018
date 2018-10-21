@@ -358,6 +358,12 @@ html(lang="en")
             const octokit = new Octokit();
             var gridster = $(".gridster ul").gridster().data('gridster');
 
+            var secret = "#{githubToken}";
+            octokit.authenticate({
+                type: 'app',
+                token: secret;
+            });
+
             var pullRequests = await paginate(octokit.pullRequests.getAll, user, repo);
             var forks = await paginate(octokit.repos.getForks, user, repo);
             console.log(pullRequests, forks);
