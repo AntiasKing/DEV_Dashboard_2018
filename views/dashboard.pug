@@ -176,6 +176,8 @@ html(lang="en")
                             createYoutubeEmbed(json.widgets[i].config.videoId, false);
                         } else if (json.widgets[i].widgetType === "intra") {
                             createIntraWidget(json.widgets[i].config.link, false, json.widgets[i].id);
+                        } else if (json.widgets[i].widgetType === "github-stat") {
+                            createGithubWidget(json.widgets[i].config.user, json.widgets[i].config.repo, false);
                         }
                     }
                 }
