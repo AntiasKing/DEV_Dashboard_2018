@@ -345,10 +345,7 @@ html(lang="en")
         async function createGithubWidget(user, repo) {
             const octokit = new Octokit();
 
-            const acces_token = "#{githubToken}";
-            console.log(user, repo, acces_token);
-            const auth = await octokit.authorization.check({"client_id": "2ccd1aa2df850c8d8c70", "access_token": acces_token});
-            console.log(auth);
+            console.log(user, repo);
             const pullRequests = await octokit.pullRequests.getAll({"owner": user, repo});
             console.log(pullRequests);
             const forks = await octokit.repos.getForks({"owner":user, repo});
