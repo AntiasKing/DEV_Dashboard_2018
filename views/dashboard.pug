@@ -359,14 +359,15 @@ html(lang="en")
             var gridster = $(".gridster ul").gridster().data('gridster');
 
             var pullRequests = await paginate(octokit.pullRequests.getAll, user, repo);
-            console.log(pullRequests);
-            const forks = await octokit.repos.getForks({"owner":user, repo});
+            const forks = await paginate(octokit.repos.getForks, user, repo);
 
             var node = document.createElement("LI");
             node.id = "github-"+user+"-"+repo;
-            node.innerHTML = '<div class="box"><div class="box-header with-border"><h3 class="box-title" id="box-title"></h3><div class="box-tools pull-right"> <button type="button" class="btn"><i class="fa fa-times"></i></button></div></div><div class="box-body"><div class="col-md-4 col-sm-6 col-xs-12"><div class="info-box"><span class="info-box-icon bg-aqua"><ion-icon name="git-pull-request"></ion-icon></span><div class="info-box-content"><span class="info-box-text" id="pull-request-text" style="font-size: x-small;"></span><span class="info-box-number" id="pull-request-nb"></span></div></div></div></div><div class="box-footer"></div>';
+            node.innerHTML = '<div class="box"><div class="box-header with-border"><h3 class="box-title" id="box-title"></h3><div class="box-tools pull-right"> <button type="button" class="btn"><i class="fa fa-times"></i></button></div></div><div class="box-body"><div class="col-md-4 col-sm-6 col-xs-12"><div class="info-box"><span class="info-box-icon bg-aqua"><ion-icon name="git-pull-request"></ion-icon></span><div class="info-box-content"><span class="info-box-text" id="pull-request-text" style="font-size: x-small;"></span><span class="info-box-number" id="pull-request-nb"></span></div></div></div><div class="col-md-4 col-sm-6 col-xs-12"><div class="info-box"><span class="info-box-icon bg-aqua"><ion-icon name="git-network"></ion-icon></span><div class="info-box-content"><span class="info-box-text" id="fork-text" style="font-size: x-small;"></span><span class="info-box-number" id="fork-nb"></span></div></div></div></div><div class="box-footer"></div>';
             node.querySelector("#box-title").innerHTML = user + "'s "+ repo + " repo stats";
             node.querySelector("#pull-request-text").innerHTML = "Pull's requests";
+            node.querySelector("#pull-request-nb").innerHTML = pullRequests.length;
+            node.querySelector("#fork-text").innerHTML = "Forks";
             node.querySelector("#pull-request-nb").innerHTML = pullRequests.length;
             node.querySelector(".btn").onclick = function() {deleteWidget(node.id)};
             gridster.add_widget(node, 5, 3);
