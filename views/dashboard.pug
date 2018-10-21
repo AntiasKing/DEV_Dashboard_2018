@@ -361,6 +361,7 @@ html(lang="en")
             paginate(octokit.pullRequests.getAll, user, repo).then(data => {
                 pullRequests = data;
             });
+            console.log(pullRequests);
             const forks = await octokit.repos.getForks({"owner":user, repo});
 
             var node = document.createElement("LI");
