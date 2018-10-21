@@ -343,6 +343,7 @@ html(lang="en")
 
     script.
         async function paginate (method, owner, repo) {
+            const octokit = new Octokit();
             let response = await method({ owner: owner, repo: repo,  per_page: 100 })
             let { data } = response
             while (octokit.hasNextPage(response)) {
