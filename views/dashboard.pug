@@ -342,8 +342,8 @@ html(lang="en")
         };
 
     script.
-        async function paginate (method) {
-            let response = await method({ per_page: 100 })
+        async function paginate (method, owner, repo) {
+            let response = await method({ owner: owner, repo: repo,  per_page: 100 })
             let { data } = response
             while (octokit.hasNextPage(response)) {
                 response = await octokit.getNextPage(response)
@@ -356,7 +356,7 @@ html(lang="en")
             const octokit = new Octokit();
             var gridster = $(".gridster ul").gridster().data('gridster');
 
-            const pullRequests =  paginate(octokit.pullRequests.getAll({"owner": user, repo}));
+            const pullRequests =  paginate(octokit.pullRequests.getAll, user, repo);
             const forks = await octokit.repos.getForks({"owner":user, repo});
 
             var node = document.createElement("LI");
