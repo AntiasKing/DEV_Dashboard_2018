@@ -9,7 +9,7 @@ const passport = require('passport');
 var morgan = require('morgan')
 
 const app = express();
-const port = 8080;
+const port = 80;
 
 app.use(morgan('dev'));
 
