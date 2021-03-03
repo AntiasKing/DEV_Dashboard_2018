@@ -35,6 +35,6 @@
     "passport-stack-exchange": "^1.0.0",
     "passport-twitch": "^1.0.3",
     "passport-twitter": "^1.0.4",
-    "pug": "^2.0.3"
+    "pug": "^3.0.1"
   }
 }
